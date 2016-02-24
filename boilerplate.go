@@ -13,6 +13,7 @@ var fileMode os.FileMode = 0600 // owner can read and write
 var db *bolt.DB
 
 // InitBolt inits bolt database. Create the file if not exist.
+// By default it opens the file in 0600 mode, with a 10 seconds timeout period
 func InitBolt(path string, buckets []string) error {
 	log.Println("Trying to open databse")
 	database = path
@@ -44,7 +45,7 @@ func Close() {
 	db.Close()
 }
 
-// Get a []byte value from bucket
+// Get value from bucket by key
 func Get(bucket []byte, key []byte) []byte {
 	var value []byte
 
@@ -75,7 +76,7 @@ func Put(bucket []byte, key []byte, value []byte) error {
 	return err
 }
 
-// Delete key from bucket
+// Delete a key from target bucket
 func Delete(bucket []byte, key []byte) error {
 	err := db.Update(func(tx *bolt.Tx) error {
 		b := tx.Bucket(bucket)
@@ -108,13 +109,13 @@ func GetAllKeys(bucket []byte) [][]byte {
 	return keys
 }
 
-// BoltPair is a key/value pair
+// BoltPair is a struct to store key/value pair data
 type BoltPair struct {
 	Key   []byte
 	Value []byte
 }
 
-// GetAllKeyValues get all key/value pairs from a bucket a BoltPair struct format
+// GetAllKeyValues get all key/value pairs from a bucket in BoltPair struct format
 func GetAllKeyValues(bucket []byte) []BoltPair {
 	var pairs []BoltPair
 
