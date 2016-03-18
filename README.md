@@ -11,7 +11,7 @@ boltdb-boilerplate is a simple & stupid boilerplate project wrapping around [bol
 * `GetAllKeys`: Get all keys from a bucket in `[][]byte` fromat
 * `GetAllKeyValues`: Get all key/value pairs from a bucket in `[]BoltPair` fromat
 
-# Quick Demo
+# Usage Demo
 ```go
 // import
 import "github.com/bobintornado/boltdbboilerplate"
