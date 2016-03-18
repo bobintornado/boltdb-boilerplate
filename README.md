@@ -44,6 +44,9 @@ keys := boltdbboilerplate.GetAllKeys([]byte("sensors"))
 // Get all key/value pairs
 pairs := boltdbboilerplate.GetAllKeyValues([]byte("sensors"))
 // pairs = [{Key:key1, Value:value1}, {Key: key2, Value:value2}]
+
+// Close
+boltdbboilerplate.Close()
 ```
 
 # Docs
