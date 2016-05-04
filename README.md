@@ -16,7 +16,7 @@ boltdb-boilerplate is a simple & stupid boilerplate project wrapping around [bol
 # Usage Demo
 ```go
 // import
-import "github.com/bobintornado/boltdbboilerplate"
+import "github.com/bobintornado/boltdb-boilerplate"
 
 // Init
 buckets := []string{"ownerBucket", "sensors"}
